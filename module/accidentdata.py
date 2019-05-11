@@ -77,14 +77,14 @@ class AccidentData:
             table = soup.find("table")
             if not table:
                 continue
-            type = table.find("td", "caption", text="Type:")
-            date = table.find("td", "caption", text="Date:")
-            if type:
-                type_desc = type.parent.find("td", "desc").find("a").text
+            type_caption = table.find("td", "caption", text="Type:")
+            date_caption = table.find("td", "caption", text="Date:")
+            if type_caption:
+                type_desc = type_caption.parent.find("td", "desc").find("a").text
             else:
                 type_desc = None
-            if date:
-                date_desc = date.nextSibling.text
+            if date_caption:
+                date_desc = date_caption.nextSibling.text
             else:
                 date_desc = None
             data = [type_desc, date_desc]
@@ -117,6 +117,7 @@ class AccidentData:
         self.analysis_dct["max_fatalities"] = 0
         self.analysis_dct["phases"] = {}
         self.analysis_dct["damage"] = {}
+        destroyed_dct = {}
 
         for accident in self.accidents:
             accident.process_data()
@@ -134,11 +135,19 @@ class AccidentData:
             else:
                 self.analysis_dct["damage"][accident.damage] += 1
 
+            if accident.damage == "Destroyed" or accident.damage == "Substantial":
+                if accident.phase not in destroyed_dct.keys():
+                    destroyed_dct[accident.phase] = 1
+                else:
+                    destroyed_dct[accident.phase] += 1
+
         self.analysis_dct["accidents_number"] = len(self.accidents)
         self.analysis_dct["fatalities_percent"] = fatal_percent_sum / self.analysis_dct["accidents_number"]
-        self.analysis_dct["max_percent_phase"]
-        self.analysis_dct["destroyed_damage"]
-        self.analysis_dct["substantial_damage"]
+        max_percent_phase = sorted(list(self.analysis_dct['phases'].items()), key=lambda x: x[1], reverse=True)[0][0]
+        max_percent_phase_num = max(self.analysis_dct['phases'].values()) / sum(self.analysis_dct['phases'].values()) * 100
+        self.analysis_dct["max_percent_phase"] = (max_percent_phase, max_percent_phase_num)
+        max_destroyed_planes_phase = sorted(list(self.analysis_dct['phases'].items()), key=lambda x: x[1], reverse=True)[0]
+        self.analysis_dct["destroyed_damage"] = max_destroyed_planes_phase
 
     def show_infographics(self):
         self.form_analysis_data()
@@ -146,8 +155,9 @@ class AccidentData:
                            f"Percent of fatalities: {self.analysis_dct['fatalities_percent']}\n" \
                            f"Max fatalities count: {self.analysis_dct['max_fatalities']}\n" \
                            f"Phases: {self.analysis_dct['phases']}\n" \
-                           f"Aircraft damage: {self.analysis_dct['damage']}\n"
-
+                           f"Aircraft damage: {self.analysis_dct['damage']}\n" \
+                           f"Phase with most accidents: {self.analysis_dct['max_percent_phase']}\n" \
+                           f"Phase with accidents with planes dealed destroyed or substantial damage: {self.analysis_dct['destroyed_damage']}\n"
         print(infographics_str)
         """
         Number of accidents: 47
@@ -190,10 +200,5 @@ if __name__ == '__main__':
     object = "2019"
 
     a = AccidentData(category, object)
-    import time
-    start = time.time()
     a.get_data()
-    print(time.time() - start)
-    start = time.time()
     a.show_infographics()
-    print(time.time() - start)

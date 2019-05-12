@@ -7,7 +7,7 @@ This project analyzes data about plane crashes and displays information about li
 User has to enter category to select accidents(year/aircraft/airlines) and define appropriate criteria due to category. After analyzing data, program depicts infographics about collected accidents.
 
 ### Input/Output
-Input: category of accidents and criteria depending on category
+Input: category of accidents and criteria depending on category<br>
 Output: infographics about selected accidents
 
 ### Structure

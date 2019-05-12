@@ -25,12 +25,6 @@ class AccidentData:
             soup = bs(request.content, 'html.parser')
             accidents_url = base_url + soup.find("a", text=self.criteria)["href"].replace("index", "database")
 
-        elif self.criteria_type == "country":
-            base_url = "https://aviation-safety.net/database/country/"
-            request = requests.get(base_url)
-            soup = bs(request.content, 'html.parser')
-            accidents_url = base_url + soup.find("a", text=self.criteria)["href"]
-
         elif self.criteria_type == "airlines":
             base_url = "https://aviation-safety.net/database/operator/airlinesearch.php"
             data = {"naam": self.criteria, "submit": "Search"}
@@ -43,21 +37,13 @@ class AccidentData:
             request = requests.get(base_url)
             soup = bs(request.content, 'html.parser')
             accidents_url = base_url + soup.find("a", text=self.criteria)["href"]
-        else:
-            return 1
         return accidents_url
 
     def parse_accidents(self, accidents_url):
-        # options = Options()
-        # options.headless = True
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--window-size=600x400")
-        chrome_driver = os.getcwd() + "/chromedriver"
-        driver = webdriver.Chrome(executable_path=chrome_driver,
-                                  chrome_options=chrome_options)
-
-        # driver = webdriver.Firefox()
+        driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"), chrome_options=chrome_options)
         driver.get(accidents_url)
         html = driver.page_source
         accidents_soup = bs(html, 'html.parser')
@@ -159,13 +145,6 @@ class AccidentData:
                            f"Phase with most accidents: {self.analysis_dct['max_percent_phase']}\n" \
                            f"Phase with accidents with planes dealed destroyed or substantial damage: {self.analysis_dct['destroyed_damage']}\n"
         print(infographics_str)
-        """
-        Number of accidents: 47
-        Percent of fatalities: 0.0
-        Phases: {'LDG': 20, 'TOF': 4, 'ENR': 11, 'APR': 2, 'MNV': 1, 'TXI': 3, 'STD': 4, 'ICL': 2}
-        Aircraft damage: {'Substantial': 28, 'Damaged beyond repair': 3, 'Destroyed': 14, 'Minor': 1, 'None': 1}
-        Max fatalities count: 157
-        """
 
     def add(self, elem):
         self.accidents.add(elem)
@@ -194,11 +173,8 @@ class AccidentData:
 
 
 if __name__ == '__main__':
-    # category = input("Enter category: ")
-    category = "year"
-    # object = input(f"Enter {category}: ")
-    object = "2019"
-
-    a = AccidentData(category, object)
-    a.get_data()
-    a.show_infographics()
+    category = input("Enter category: ")
+    obj = input(f"Enter {category}: ")
+    accidents = AccidentData(category, obj)
+    accidents.get_data()
+    accidents.show_infographics()

@@ -14,15 +14,15 @@ def analyze():
     criteria_category = request.form.get('button')
     criteria_obj = request.form.get('criteria')
     button_str = '<a href="/"><button type="button" class="btn btn-primary btn-lg">Return to main page</button></a>'
-    # try:
-    accidents = AccidentData(criteria_category, criteria_obj)
-    accidents.get_data()
-    graphics = accidents.show_infographics() + button_str
-    # except:
-    #     start_str = '<div class="row mb-3"><div class="col-md-12">'
-    #     end_str = '</div></div>'
-    #     content_str = '<p><b>Error! Please, enter proper value!</b></p>'
-    #     graphics = start_str + content_str + button_str + end_str
+    try:
+        accidents = AccidentData(criteria_category, criteria_obj)
+        accidents.get_data()
+        graphics = accidents.show_infographics() + button_str
+    except:
+        start_str = '<div class="row mb-3"><div class="col-md-12">'
+        end_str = '</div></div>'
+        content_str = '<p><b>Error! Please, enter proper value!</b></p>'
+        graphics = start_str + content_str + button_str + end_str
 
     with open("templates/analysis.html", "w") as f:
         begin_str = '{% extends "layout.html" %}{% block body %}'

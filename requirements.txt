@@ -58,7 +58,6 @@ pycrypto==2.6.1
 PyInstaller==3.4
 pyOpenSSL==19.0.0
 pyparsing==2.3.0
-python-apt==1.6.3+ubuntu1
 python-dateutil==2.8.0
 python-debian==0.1.32
 python-gnupg==0.4.1

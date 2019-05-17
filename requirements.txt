@@ -34,6 +34,7 @@ numpy==1.16.1
 pandas==0.24.1
 parsel==1.5.1
 pipenv==2018.11.26
+plotly==3.9.0
 pyasn1==0.4.5
 pyasn1-modules==0.2.4
 pycairo==1.16.2

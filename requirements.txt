@@ -30,7 +30,6 @@ jupyter-client==5.2.3
 jupyter-console==6.0.0
 jupyter-core==4.4.0
 kiwisolver==1.0.1
-language-selector==0.1
 launchpadlib==1.10.6
 lazr.restfulclient==0.13.5
 lazr.uri==1.0.3

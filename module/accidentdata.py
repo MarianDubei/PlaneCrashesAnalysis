@@ -46,7 +46,7 @@ class AccidentData:
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--window-size=600x400")
-        driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"), chrome_options=chrome_options)
+        driver = webdriver.Chrome(executable_path="chromedriver", chrome_options=chrome_options)
         driver.get(accidents_url)
         html = driver.page_source
         accidents_soup = bs(html, 'html.parser')

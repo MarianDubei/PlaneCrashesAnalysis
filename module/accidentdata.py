@@ -48,7 +48,7 @@ class AccidentData:
         chrome_options.add_argument("--window-size=600x400")
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument('--no-sandbox')
-        driver = webdriver.Chrome(executable_path=os.getcwd() + "/module/chromedriver", chrome_options=chrome_options)
+        driver = webdriver.Chrome(executable_path=os.getcwd() + "/chromedriver", chrome_options=chrome_options)
         driver.get(accidents_url)
         html = driver.page_source
         accidents_soup = bs(html, 'html.parser')

@@ -1,0 +1,25 @@
+  class App extends React.Component {
+    static getDerivedStateFromProps(props, state) {
+      // load data with ajax
+    }
+    
+    render() {
+      return (
+        <div>
+          <h1>Hello World</h1>
+          <p>This is a react component</p>
+        </div>
+      )
+    }
+  }
+
+function renderReact() {
+  ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+  );
+}
+
+$(document).on("click", ".my-button", function() {
+  renderReact();
+});

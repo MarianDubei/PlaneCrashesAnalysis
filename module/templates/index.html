@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center" style="font-family: Arial, sans-serif; color: white;">AviaCrashStats</h1>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <p class="text-center" style="font-family: 'Arial', sans-serif; color: white;">The website analyzes data about plane crashes and displays information about link between mortality rate and incident circumstances, such as flight phase or plane period of operation.</p>
+      </div>
+    </div>
+    <br><br><br>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center" style="font-family: 'Arial', sans-serif; color: white;">Choose category to analyze:</h2>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+        <button type="button" class="btn btn-block btn-primary btn-lg aircraft">Aircraft</button>
+        <button type="button" class="btn btn-block btn-primary btn-lg year">Year</button>
+        <!-- <button type="button" class="btn btn-block btn-primary btn-lg airline">Airline</button> -->
+      </div>
+    </div>
+    <br><br><br><br>
+    <div class="row">
+      <div id="root"></div>
+      
+    </div>
+    <script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();       
+        }
+// ]]></script>
+{% endblock %}

@@ -6,16 +6,13 @@ class PlaneCrashTest(unittest.TestCase):
     def setUp(self):
         self.year_accidents = AccidentData("year", "1919")
         self.aircraft_accidents = AccidentData("aircraft", "Boeing 737-8 MAX")
-        self.airlines_accidents = AccidentData("airlines", "Alsair")
 
     def test_data(self):
         self.year_accidents.get_data()
         self.aircraft_accidents.get_data()
-        self.airlines_accidents.get_data()
 
         self.year_accidents.show_infographics()
         self.aircraft_accidents.show_infographics()
-        self.airlines_accidents.show_infographics()
 
         self.assertEqual(self.year_accidents.criteria_type, "year")
         self.assertEqual(self.year_accidents.criteria, "1919")
@@ -35,7 +32,6 @@ class PlaneCrashTest(unittest.TestCase):
 
         self.assertEqual(self.aircraft_accidents.criteria_type, "aircraft")
         self.assertEqual(self.aircraft_accidents.criteria, "Boeing 737-8 MAX")
-        self.assertEqual(len(self.aircraft_accidents), 2)
         self.assertEqual(
             self.aircraft_accidents.analysis_dct["accidents_number"], 2)
         self.assertEqual(

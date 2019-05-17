@@ -7,7 +7,6 @@ backcall==0.1.0
 beautifulsoup4==4.7.1
 bleach==3.0.2
 branca==0.3.1
-Brlapi==0.6.6
 certifi==2019.3.9
 cffi==1.12.1
 chardet==3.0.4

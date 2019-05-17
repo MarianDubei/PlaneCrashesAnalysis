@@ -48,7 +48,6 @@ selenium==3.141.0
 service-identity==18.1.0
 six==1.11.0
 soupsieve==1.9.1
-tails-installer==3.11.8
 typing==3.6.6
 urlgrabber==3.10.2
 urllib3==1.24.1

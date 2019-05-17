@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from accidentdata import AccidentData
+from module.accidentdata import AccidentData
 
 app = Flask(__name__)
 

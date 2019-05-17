@@ -63,6 +63,5 @@ python-debian==0.1.32
 python-gnupg==0.4.1
 python-mpd2==1.0.0
 systemd-python==234
-unattended-upgrades==0.1
 urllib3==1.25.2
 Werkzeug==0.15.4

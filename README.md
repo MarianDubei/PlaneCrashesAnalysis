@@ -11,6 +11,6 @@ Input: category of accidents and criteria depending on category<br>
 Output: infographics about selected accidents
 
 ### Structure
-* __main.py__ - runs program
+* __app.py__ - runs program
 * __accidentdata.py__ - contains ADT to find and analyze data about selected accidents
 * __accident.py__ - contains ADT to keep data about an accident

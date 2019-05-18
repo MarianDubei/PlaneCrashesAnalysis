@@ -11,6 +11,9 @@ def index():
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
+    """
+    Generates html content of page with accidents analysis.
+    """
     criteria_category = request.form.get('button')
     criteria_obj = request.form.get('criteria')
     button_str = '<a href="/"><button type="button" class="btn btn-primary btn-lg">Return to main page</button></a>'

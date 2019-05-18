@@ -3,6 +3,10 @@ from datetime import datetime
 
 
 class Accident:
+    """
+    Class for representing information about an accident and processing it in
+    order to make it readable.
+    """
     CURRENT_YEAR = datetime.now().year
 
     def __init__(self, data):
@@ -17,6 +21,10 @@ class Accident:
         self.fatalities_percent = 0
 
     def process_data(self):
+        """
+        Processes data so that it can be used by AccidentData class.
+        :return: None
+        """
         self.aircraft_years = Accident.CURRENT_YEAR - int(re.search(r"[0-9]{4}", self.first_flight).group(0))
         fatalities_list = re.findall(r"[0-9]+", str(self.fatalities))
         if not(fatalities_list[0] == '0'):

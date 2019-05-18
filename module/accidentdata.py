@@ -11,7 +11,8 @@ import plotly.graph_objs as go
 
 class AccidentData:
     """
-    Class for representing the information about plane accidents.
+    Class for getting, representing and processing the data about plane
+    accidents.
     """
     def __init__(self, criteria_type, criteria):
         self.accidents = set()
@@ -20,7 +21,10 @@ class AccidentData:
         self.analysis_dct = {}
 
     def get_accidents_url(self):
-
+        """
+        Gets url of page with links of appropriate accidents due to input.
+        :return: string
+        """
         if self.criteria_type == "aircraft":
             base_url = "https://aviation-safety.net/database/type/"
             request = requests.get(base_url)
@@ -43,6 +47,12 @@ class AccidentData:
         return accidents_url
 
     def parse_accidents(self, accidents_url):
+        """
+        Fills self.accidents with Accident objects formed of data from
+        accident web pages.
+        :param accidents_url: string
+        :return: None
+        """
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--window-size=600x400")
@@ -94,7 +104,7 @@ class AccidentData:
 
     def get_data(self):
         """
-        Finds information about necessary plane crashes to the set.
+        Finds data about necessary plane accidents and adds to the set.
         :return: None
         """
         accidents_url = self.get_accidents_url()
@@ -102,7 +112,9 @@ class AccidentData:
 
     def form_analysis_data(self):
         """
-        :return:
+        Forms self.analysis_dct dictionary out of processed information made
+        from parsed accident data.
+        :return: None
         """
         fatal_percent_sum = 0
         self.analysis_dct["max_fatalities"] = 0
@@ -144,6 +156,10 @@ class AccidentData:
         self.analysis_dct["destroyed_damage"] = max_destroyed_planes_phase
 
     def show_infographics(self):
+        """
+        Forms HTML content out of dictionary with analyzed data.
+        :return: string
+        """
         self.form_analysis_data()
 
         def div_wrapper(content_str):
@@ -210,9 +226,20 @@ class AccidentData:
         return html_str
 
     def add(self, elem):
+        """
+        Adds new element to set.
+        :param elem: Accident
+        :return: None
+        """
         self.accidents.add(elem)
 
     def modify(self, old_elem, new_elem):
+        """
+        Replaces element with new element in set.
+        :param old_elem: Accident
+        :param new_elem: Accident
+        :return: None
+        """
         try:
             self.accidents.remove(old_elem)
             self.accidents.add(new_elem)
@@ -220,6 +247,11 @@ class AccidentData:
             return 1
 
     def remove(self, elem):
+        """
+        Removes element from set.
+        :param elem: Accident
+        :return: None
+        """
         try:
             self.accidents.remove(elem)
         except KeyError:

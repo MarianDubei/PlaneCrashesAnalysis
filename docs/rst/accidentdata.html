@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>accidentdata module &#8212; AviaCrashStats 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-accidentdata">
+<span id="accidentdata-module"></span><h1>accidentdata module<a class="headerlink" href="#module-accidentdata" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="accidentdata.AccidentData">
+<em class="property">class </em><code class="descclassname">accidentdata.</code><code class="descname">AccidentData</code><span class="sig-paren">(</span><em>criteria_type</em>, <em>criteria</em><span class="sig-paren">)</span><a class="headerlink" href="#accidentdata.AccidentData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for getting, representing and processing the data about plane
+accidents.</p>
+<dl class="method">
+<dt id="accidentdata.AccidentData.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>elem</em><span class="sig-paren">)</span><a class="headerlink" href="#accidentdata.AccidentData.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds new element to set.
+:param elem: Accident
+:return: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="accidentdata.AccidentData.form_analysis_data">
+<code class="descname">form_analysis_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#accidentdata.AccidentData.form_analysis_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forms self.analysis_dct dictionary out of processed information made
+from parsed accident data.
+:return: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="accidentdata.AccidentData.get_accidents_url">
+<code class="descname">get_accidents_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#accidentdata.AccidentData.get_accidents_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets url of page with links of appropriate accidents due to input.
+:return: string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="accidentdata.AccidentData.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#accidentdata.AccidentData.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds data about necessary plane accidents and adds to the set.
+:return: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="accidentdata.AccidentData.modify">
+<code class="descname">modify</code><span class="sig-paren">(</span><em>old_elem</em>, <em>new_elem</em><span class="sig-paren">)</span><a class="headerlink" href="#accidentdata.AccidentData.modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces element with new element in set.
+:param old_elem: Accident
+:param new_elem: Accident
+:return: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="accidentdata.AccidentData.parse_accidents">
+<code class="descname">parse_accidents</code><span class="sig-paren">(</span><em>accidents_url</em><span class="sig-paren">)</span><a class="headerlink" href="#accidentdata.AccidentData.parse_accidents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills self.accidents with Accident objects formed of data from
+accident web pages.
+:param accidents_url: string
+:return: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="accidentdata.AccidentData.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>elem</em><span class="sig-paren">)</span><a class="headerlink" href="#accidentdata.AccidentData.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes element from set.
+:param elem: Accident
+:return: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="accidentdata.AccidentData.show_infographics">
+<code class="descname">show_infographics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#accidentdata.AccidentData.show_infographics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forms HTML content out of dictionary with analyzed data.
+:return: string</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">AviaCrashStats</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Marian Dubei.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/rst/accidentdata.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,7 @@
+accident module
+===============
+
+.. automodule:: accident
+    :members:
+    :undoc-members:
+    :show-inheritance:
